@@ -1,10 +1,15 @@
-const express = require("express");
-const schema= require('./schema');
- const { graphqlHTTP } = require("express-graphql");
+const  express =require('express'); 
+const { createHandler } =require( 'graphql-http/lib/use/express');
+const moongoose= require('mongoose');
+const cors= require(cors);
+mmongoose.connect('mongodb://localhost:27017');
+mongoose.connection.once('open',()=>{
+    console.log("connection is established");
+})
+const { schema } =require('./schema');
 const app = express();
-app.use('/graphql',graphqlHTTP({
-    schema:schema//by the way we can write simply schema
-}));
-app.listen(3000,()=>{
-    console.log("the server is listening");
-});
+app.use(cors);
+app.all('/graphql', createHandler({ schema }));
+
+app.listen({ port: 4000 });
+console.log('Listening to port 4000');
