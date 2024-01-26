@@ -40,7 +40,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
     <div className="App">
-      {/* <BookList></BookList> */}
+      <BookList></BookList>
       <AddBooks></AddBooks>
     </div>
     </ApolloProvider>

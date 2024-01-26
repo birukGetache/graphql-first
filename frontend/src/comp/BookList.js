@@ -6,13 +6,17 @@ class BookList extends Component {
     
     displayBooks(){
         var data= this.props.data;
+        console.log(data);
         if(data.loading){
             return (<div>Loading books...</div>)
+        }
+        else{
+          console.log(data);
         }
         // else {
         //     return data.books.map(book=>{
         //         return(
-        //             <li key={book.id}>{books.name}</li>
+        //             <li key={book.id}>{book.name}</li>
         //         )
                     
         //     })
@@ -24,7 +28,8 @@ class BookList extends Component {
    
     return(  <div className="App">
     <ul>
-     {this.displayBooks}
+      <li>books</li>
+     {this.displayBooks()}
     </ul>
  </div>)
   }
